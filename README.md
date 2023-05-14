@@ -1,4 +1,4 @@
-# 🎀My cute little website.🎀 vol1
+# 🎀My cute little website.🎀 ver1
 
 ### 💬 Language : ReactJS + express
 
