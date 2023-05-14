@@ -1,4 +1,4 @@
-# 🎀My cute little website.🎀 ver1
+# 🎀My cute little website.🎀
 
 ## 인사말 웹 애플리케이션
 
