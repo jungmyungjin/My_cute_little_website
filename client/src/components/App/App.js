@@ -1,16 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SayHi from "../SayHi/SayHi";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-// import AppStyle from "./App.styles";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-  // useEffect(() => {
   return (
     <div className="App">
-      {/* <FontLoader /> */}
-      {/* <AppStyle /> */}
       <Header />
       <Router>
         <Routes>
@@ -22,9 +18,6 @@ function App() {
         </Routes>
       </Router>
       <Footer />
-      {/* <Header />
-      <SayHi />
-      <Footer /> */}
     </div>
   );
 }

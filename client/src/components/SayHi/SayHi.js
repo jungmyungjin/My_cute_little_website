@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { SayHiLayout, SayHiSection, SayHiSpan } from "./SayHi.styles";
+import { SayHiLayout, SayHiSection } from "./SayHi.styles";
 import { useLocation } from "react-router-dom";
 import FontLoaders from "../font/FontLoaders";
 
