@@ -1,22 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SayHi from "../SayHi/SayHi";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { fetchKR, fetchUS, fetchJP, fetchCN } from "../../services/index";
+
+function SayHiLang({ fetchApi }) {
+  const [greeting, setGreeting] = useState("hoho");
+
+  useEffect(() => {
+    const load = async () => {
+      const data = await fetchApi();
+      if (!data) {
+        setGreeting("🔌서버 연결중...");
+      } else {
+        setGreeting(data);
+      }
+    };
+    load();
+  }, [fetchApi]);
+
+  return <SayHi greeting={greeting} />;
+}
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Router>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SayHi greeting="Hi" />} />
-          <Route path="/lang/KR" element={<SayHi greeting="안녕" />} />
-          <Route path="/lang/US" element={<SayHi greeting="Hi" />} />
-          <Route path="/lang/JP" element={<SayHi greeting="こんにちは" />} />
-          <Route path="/lang/CN" element={<SayHi greeting="你好" />} />
+          <Route path="/" element={<SayHiLang fetchApi={fetchKR} />} />
+          <Route path="/lang">
+            <Route path="/lang/KR" element={<SayHiLang fetchApi={fetchKR} />} />
+            <Route path="/lang/US" element={<SayHiLang fetchApi={fetchUS} />} />
+            <Route path="/lang/JP" element={<SayHiLang fetchApi={fetchJP} />} />
+            <Route path="/lang/CN" element={<SayHiLang fetchApi={fetchCN} />} />
+          </Route>
         </Routes>
-      </Router>
+      </BrowserRouter>
       <Footer />
     </div>
   );
